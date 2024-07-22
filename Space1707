@@ -1,0 +1,19 @@
+State<---------GivenState
+Goal<----------GivenGoal
+Plan<-----()
+While True
+do if Satisfies(State,Goal)
+Then Return Task;
+Else Let A be set of relevant actions for Goal;
+For Each Subgoal g<goal /*AND Node*/
+do
+Choose An Action a in R  /* OR Node*/
+If No such action exists;
+Ten Return Fail
+SubPlan<----Recursive GSP(State,Precondition(a),actions)
+If subplan=Fail
+Then Return Fail
+Else  /* a deterministic version will backtrack;
+State<-----PlanProgress(Subplan,State)
+/*Progress State in the Forward Direction*/
+Plan<---------(Plan.SubPlan.A)
